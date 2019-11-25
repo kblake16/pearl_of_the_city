@@ -1,4 +1,5 @@
-package test;
+package pearl_of_the_city;
+
 import java.util.*;
 import java.io.*;
 public class UserInterface {
