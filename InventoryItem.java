@@ -1,4 +1,4 @@
-package Pearl_of-the-City;
+package pearl_of-the-city;
 import java.util.*;
 public class InventoryItem extends Item {
 
