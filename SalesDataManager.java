@@ -1,3 +1,5 @@
+package pearl_of_the_city;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
