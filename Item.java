@@ -143,11 +143,7 @@ public class Item  implements Comparable <Item>{
         }
         
      public String appDisplay(){
-            return " Entry No: "  + getEntryNo() + "\n" +  "Name :" + getName() + "\n" +  "Brand: " + getBrand() + "\n" + "Description: " + getDescription() + "\n" + "Cost Price :" + getPrice() +  "\n" + "Selling Price :" + getSellPrice();
-        }
-
-    public String toString(){
-       return  " Item Name : "  + getName() + "\n" +  "Brand:" + getBrand() + "\n" + "Description:" + getDescription() + "\n" + " Cost Price : $ " + getPrice() + "\n" + " Selling Price :$ " + getSellPrice() +  "\n" + "Quantity :" + getQuantity();
+       return  " Item Name : "  + getName() + "\n" +  "Brand:" + getBrand() + "\n" + "Type: " + getProductType() +  "\n" + "Description:" + getDescription() + "\n" + " Cost Price : $ " + getPrice() + ".00" + "\n" + " Selling Price :$ " + getSellPrice() + ".00" +  "\n" + "Quantity :" + getQuantity();
     }
 
     public int compareTo (Item other){
