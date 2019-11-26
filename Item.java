@@ -1,4 +1,4 @@
-package pearl_of_the_city;
+
 import java.util.*;
 
 public class Item  implements Comparable <Item>{
@@ -48,8 +48,8 @@ public class Item  implements Comparable <Item>{
         return ( sp );
     }
 
-    public double getQuantity(){
-        double quan = this.quantity;
+    public int getQuantity(){
+        int  quan = this.quantity;
         
         return ( quan );
 
@@ -103,7 +103,7 @@ public class Item  implements Comparable <Item>{
     }
     public String getProductType(){
         String tip = this.typeOfProduct;
-        return  ("Item's Type: " + tip);
+        return  ( tip);
 
     }
 
@@ -116,10 +116,10 @@ public class Item  implements Comparable <Item>{
         }
     }
 
-    public String removeQuantity(int decQuan){
+    public void removeQuantity(int decQuan){
         if (decQuan   > 0) {
             this.quantity -=  decQuan;
-            return "The item's quantity has been updated ";
+            
         } else {
             return "Please  enter a value greater than 0 ";
         }
