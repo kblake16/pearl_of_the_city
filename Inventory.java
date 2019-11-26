@@ -36,7 +36,18 @@ public void addItem (String name , String brand, String type,  int quantity,  St
         * @param entryNO, entry no  that the user wants to deleted
                 */
 
-
+public String stockLevel(){
+    int notify = 5;
+for (Item item1: InventoryList){
+    if (item1.getQuantity1() <= notify){
+        newObject = item1;
+        String name = newObject.getName();
+        return ( name + " Quantity is curently low and should be restocked as soon as possible");
+    }
+    
+}
+	return (" No notifications at this time");
+}
 
 
 
