@@ -24,42 +24,42 @@ public class Item  implements Comparable <Item>{
     public String getName (){
         
         String itemName = this.itemName;
-        return ( "Item's Name : " + itemName);
+        return (  itemName);
     }
 
     
 
     public String getBrand (){
         String brandName = this.brand;
-           return ( "Brand's Name :" + brandName);
+           return ( brandName);
     }
 
-    public String getPrice (){
+    public double  getPrice (){
         double cp = this.costPrice;
-        String display  = String.valueOf(cp);
+      
 
-        return ( "Item's Cost: $" + display + ".00");
+        return ( cp);
     }
 
 
     public String getSellPrice (){
         double sp = this.sellingPrice;
-        String display1  = String.valueOf(sp);
+        
 
-        return ( "Item's Selling Price: $" + display1 + ".00");
+        return ( sp );
     }
 
-    public String getQuantity(){
+    public double getQuantity(){
         double quan = this.quantity;
-        String display2  = String.valueOf(quan);
+        
 
-        return ( "Item's Current Quantity :" + display2 );
+        return ( quan );
 
     }
     public String getDescription(){
         String des = this.description;
 
-        return  ( "Item's Description :" + des );
+        return  ( des );
     }
 
     public String editName ( String newName){
