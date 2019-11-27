@@ -1,4 +1,5 @@
-package pearl_of_the_city;
+package InventoryManager;
+
 import java.util.*;
 import java.io.*;
 
@@ -7,10 +8,11 @@ import java.io.*;
 public class Inventory  {
 
     private ArrayList<Item> InventoryList =new ArrayList<Item>();
-    private Item newObject;
+    private Item item;
 
-    public Inventory() {
-   
+    public Inventory() 
+    {
+    	
 	
     }
 /**
@@ -22,12 +24,17 @@ public class Inventory  {
                    * @param  price , cost price of item
                    * *@param  sellPrice , selling price
 				 */
-public void addItem (String type, String name, double cp,  double sp , int quan,  String des) {
-   Item newObject = new  Item( type, name,  cp,  sp , quan,   des);
+public void addItem (String code, String type, String name, double cp,  double sp , int quan,  String des) {
+    item = new  Item( type, name,  cp,  sp , quan,   des);
    
-    if (! InventoryList.contains(newObject)) {
-        InventoryList.add(newObject);
+    if (! InventoryList.contains(item)) {
+        InventoryList.add(item);
     }      
+}
+
+public ArrayList<Item> getItems()
+{
+	return InventoryList;
 }
 
 
@@ -40,8 +47,8 @@ public String stockLevel(){
     int notify = 5;
 for (Item item1: InventoryList){
     if (item1.getQuantity() <= notify){
-        newObject = item1;
-        String name = newObject.getName();
+        item = item1;
+        String name = item.getName();
         return ( name + " Quantity is curently low and should be restocked as soon as possible");
     }
     
@@ -55,26 +62,26 @@ return (" No notifications at this time");
         * @return Notification with information on the specific item 
                 */
 
-public String entryNoSearch(String entryNO) {
+public Item codeSearch(String entryNO) {
     for (Item item1: InventoryList){
-        if (item1.displayProductCode().equals(entryNO)){
-            newObject = item1;
+        if (item1.getCode().equals(entryNO)){
+            item = item1;
         }
     }
-    return newObject.appDisplay();
+    return item;
 }
 /**
     * Displays information for a specific item by entering it's entry no.
      * @param name, item's name
         * @return Notification with information on the specific item 
                 */
-public String itemNameSearch(String name) {
+public Item itemNameSearch(String name) {
     for (Item item: InventoryList){
         if (item.getName().equals(name)){
-            newObject = item;
+            this.item = item;
         }
     }
-           return newObject.appDisplay();
+           return item;
 }
 /**
     * Displays cost price for a specific item by entering it's entry no.
@@ -84,7 +91,7 @@ public String itemNameSearch(String name) {
 public double getPrice(String ent ){
     double pp = 0;
     for (Item item : InventoryList){
-        if (item.displayProductCode().equals(ent)){
+        if (item.getCode().equals(ent)){
             pp =item.getPrice();
           
         } 
@@ -100,7 +107,7 @@ public double getPrice(String ent ){
 public double getSellPrice(String ent ){
     double sp = 0;
     for (Item item : InventoryList){
-        if (item.displayProductCode().equals(ent)){
+        if (item.getCode().equals(ent)){
             sp = item.getSellPrice();
            
         }
@@ -115,7 +122,7 @@ public double getSellPrice(String ent ){
 public double getQuantity(String ent){
     double quan = 0;
     for (Item item: InventoryList){
-        if (item.displayProductCode().equals(ent)){
+        if (item.getCode().equals(ent)){
             quan = item. getQuantity();
         }
     }
@@ -129,7 +136,7 @@ public double getQuantity(String ent){
 public String  getDescription(String ent){
     String des ="";
     for (Item item : InventoryList){
-        if (item.displayProductCode().equals(ent)){
+        if (item.getCode().equals(ent)){
     des = item.getDescription();
 }
 }
@@ -142,7 +149,7 @@ public String  getDescription(String ent){
                 */
 public void editName (String ent ,String name){
      for (Item item : InventoryList){
-        if (item.displayProductCode().equals(ent)){
+        if (item.getCode().equals(ent)){
             item.editName(name);
          }
      }
@@ -153,7 +160,7 @@ public void editName (String ent ,String name){
                 */
 public void changePrice(String ent ,double price){
     for (Item item : InventoryList){
-        if (item.displayProductCode().equals(ent)){
+        if (item.getCode().equals(ent)){
            item.changePrice(price);
         }
     }   
@@ -164,7 +171,7 @@ public void changePrice(String ent ,double price){
                 */
 public void changeSellPrice(String ent ,double price){
     for (Item item : InventoryList){
-        if (item.displayProductCode().equals(ent)){
+        if (item.getCode().equals(ent)){
             item.changeSellPrice(price);
         }
     }
@@ -176,7 +183,7 @@ public void changeSellPrice(String ent ,double price){
                 */
 public void removeQuantity(String ent, int num){
     for (Item item : InventoryList){
-        if (item.displayProductCode().equals(ent)) {
+        if (item.getCode().equals(ent)) {
             item.removeQuantity(num);
         }
     }
@@ -188,7 +195,7 @@ public void removeQuantity(String ent, int num){
                 */
 public void editDescription(String ent, String name){
     for (Item item : InventoryList){
-        if (item.displayProductCode().equals(ent)){
+        if (item.getCode().equals(ent)){
          item.editDescription(name);
         }
     }
@@ -199,7 +206,7 @@ public void editDescription(String ent, String name){
                 */
 public void addQuantity(String ent,int num){
     for (Item item : InventoryList){
-        if (item.displayProductCode().equals(ent)){
+        if (item.getCode().equals(ent)){
             item.addQuantity(num);
         }
     }
@@ -210,7 +217,7 @@ public void addQuantity(String ent,int num){
    // * Returns  contact information sorted in order of entry number
      //   * @return string with item info
         
-        public String itemByEntry() {
+       /* public String itemByEntry() {
 
             Collections.sort(InventoryList);
             String show = "";
@@ -224,7 +231,7 @@ public void addQuantity(String ent,int num){
         * @return string with item info
         */
 
- public String itemByName(){
+ /*public String itemByName(){
     Comparator<Item> concom = new Comparator<Item>() {
         public int compare(Item i1, Item i2) {
             return i1.getName().compareTo(i2.getName());
@@ -245,7 +252,7 @@ public void addQuantity(String ent,int num){
 public void deleteItem(String entryNo) {
     ArrayList<Item> outThere = new ArrayList<Item>();
     for (Item item1: InventoryList){
-        if (item1.displayProductCode().equals(entryNo)){
+        if (item1.getCode().equals(entryNo)){
             outThere.add(item1);
         }
 

@@ -1,3 +1,4 @@
+package InventoryManager;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -14,6 +15,7 @@ public class Transaction
 	private String[] product;
 	private LocalDate date = LocalDate.now();
 	private LocalTime time = LocalTime.now();
+	Inventory inventory = new Inventory();
 	
 	public Transaction() 
 	{
@@ -41,13 +43,14 @@ public class Transaction
 		return recNum;
 	}
 	
-	public void addItem(Item item, int num)
+	public void addItem(String code, int num)
 	{
+		Item item = inventory.codeSearch(code);
 		double price = item.getSellPrice() * num;
 		
 		product = new String[4];
 		
-		product[0] = item.getEntryNo();
+		product[0] = item.getCode();
 		product[1] = item.getName();
 		product[2] = String.valueOf(num);
 		product[3] = String.valueOf(price);
@@ -137,24 +140,24 @@ public class Transaction
 	public String toString()
 	{
 		String receipt = "";
-		receipt += "Pearl of the City Beauty Store" + "/n";
+		receipt += "Pearl of the City Beauty Store" + "\n";
 		
-		receipt += "Receipt No.: " + getRecNum() + "/n";
-		receipt += "Date: " + "/n";
-		receipt += "Time: " + "/n";
+		receipt += "Receipt No.: " + getRecNum() + "\n";
+		receipt += "Date: " + "\n";
+		receipt += "Time: " + "\n";
 		
-		receipt += "***********************************************" + "/n";
+		receipt += "***********************************************" + "\n";
 		
 		for (String[] i: items)
 		{
-			receipt += i[0] + "   " + i[1] + "   " + i[2] + "   " + i[4]+ "/n";
+			receipt += i[0] + "   " + i[1] + "   " + i[2] + "   " + i[4]+ "\n";
 		}
 		
-		receipt += "***********************************************" + "/n";
+		receipt += "***********************************************" + "\n";
 		
-		receipt += "Subtotal		" + getSubTotal() + "/n";
-		receipt += "Tax				" + getTax() + "/n";
-		receipt += "TOTAL			" + getTotal() + "/n";
+		receipt += "Subtotal		" + getSubTotal() + "\n";
+		receipt += "Tax				" + getTax() + "\n";
+		receipt += "TOTAL			" + getTotal() + "\n";
 		//receipt += "Card Tend		" + getCardPayment() + "/n";
 		//receipt += "Cash			" + getCashPayment() + "/n";
 		//receipt += "CHANGE			" + getChange() + "/n";

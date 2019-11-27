@@ -1,17 +1,24 @@
-package pearl_of_the_city;
+package InventoryManager;
 import java.util.*;
 
-public class Item implements Comparable <Item> {
+public class Item { //implements Comparable <Item> {
     private String itemName;
-    private String typeOfProduct;
+    private String category;
+    private String code;
     private String description;
     private double sellingPrice;
     private double costPrice;
     private int quantity;
-    private  static int counter = 1;
-    private String productCode;
-    private int pc;
     Map<String, String> Categories = new HashMap<String, String>();
+    
+    private static int cos = 1;
+    private static int frg = 1;
+    private static int skc = 1;
+    private static int btp = 1;
+    private static int het = 1;
+    private static int eyw = 1;
+    private static int hrp = 1;
+    private static int hac = 1;
 
 
     /**
@@ -32,15 +39,60 @@ public class Item implements Comparable <Item> {
         Categories.put("Eyewear", "EYW");
         Categories.put("Hair Products", "HRP");
         Categories.put("Hair Accessories", "HAC");
+        
+        setCode(type);
         itemName = name ;
-        typeOfProduct = type;
+        category = type;
         description = des;
         sellingPrice = sp;
         costPrice = cp;
-        quantity = quan;
-        pc= counter ++;
-        productCode = getProductCode();
-        
+        quantity = quan; 
+    }
+    
+    
+    public void setCode(String word)
+    {
+    	for (Map.Entry<String, String> entry: Categories.entrySet())
+    	{
+    		String k = entry.getKey();
+    		String val = entry.getValue();
+    		
+    		if ( k.equals(word))
+    		{
+    			if(val.equals("COS")) {
+    				code = "COS" + String.valueOf(cos);
+    				cos ++;
+    			}
+    			else if(val.equals("FRG")) {
+    				code = "FRG" + String.valueOf(frg);
+    				frg ++;
+    			}
+    			else if(val.equals("SKC")) {
+    				code = "SKC" + String.valueOf(skc);
+    				skc ++;
+    			}
+    			else if(val.equals("BTP")) {
+    				code = "BTP" + String.valueOf(btp);
+    				btp ++;
+    			}
+    			else if(val.equals("HET")) {
+    				code = "HET" + String.valueOf(het);
+    				het ++;
+    			}
+    			else if(val.equals("EYW")) {
+    				code = "EYW" + String.valueOf(eyw);
+    				eyw ++;
+    			}
+    			else if(val.equals("HRP")) {
+    				code = "HRP" + String.valueOf(hrp);
+    				hrp ++;
+    			}
+    			else if(val.equals("HAC")) {
+    				code = "HAC" + String.valueOf(hac);
+    				hac ++;
+    			}
+    		}
+    	}
     }
     /**
     * Displays name for a specific item 
@@ -134,8 +186,8 @@ public class Item implements Comparable <Item> {
         * @return category  of  specific item 
                 */
    
-    public String getProductType(){
-        String tip = this.typeOfProduct;
+    public String getCategory(){
+        String tip = this.category;
         return  ( tip);
 
     }
@@ -179,34 +231,21 @@ public class Item implements Comparable <Item> {
 	 * @return  displays the Product Code to the screen 
     */
     
-    public String getProductCode (){
-        String productCode = "";
-        for (String key : Categories.keySet()) {
-            if ( key == getProductType()) {
-                
-                productCode = Categories.get(key) + pc;
-            }
-        }
-
-			
-	        return productCode;
-        }
         
-        public String displayProductCode(){
-            return this.productCode;
+        public String getCode(){
+            return this.code;
         }
     
 
-    public String appDisplay(){
+   /* public String appDisplay(){
         
         
        return "Entry No:" + displayProductCode() +  "\n" + " Item Name : "  + getName() + "\n" + "Type: " + getProductType() +  "\n" + "Description: " + getDescription() + "\n" + " Cost Price : $" + (int) getPrice() + ".00" + "\n" + " Selling Price :$ " + (int) getSellPrice() + ".00" +  "\n" + "Quantity :" + (int) getQuantity();
-    }
+    }*/
 
-  public int compareTo (Item other){
+ /* public int compareTo (Item other){
       String  myentryno = this.getEntryNo();
        String otherentryno = other.getEntryNo();
               return ( myentryno.compareTo(otherentryno));
-
-}
+              }*/
 }
