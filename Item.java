@@ -49,6 +49,7 @@ public class Item { //implements Comparable <Item> {
         quantity = quan; 
     }
     
+    public Item () {}
     
     public void setCode(String word)
     {
