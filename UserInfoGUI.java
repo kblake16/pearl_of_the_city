@@ -11,12 +11,11 @@ import java.awt.Font;
 import javax.swing.JTextArea;
 
 public class UserInfoGUI extends JFrame {
-
+//Declaration of variables
 	private JPanel contentPane;
-
-	/**
-	 * Launch the application.
-	 */
+	private UserDataManager userFile = new UserDataManager();
+	private UserInfo user;
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -34,6 +33,9 @@ public class UserInfoGUI extends JFrame {
 	 * Create the frame.
 	 */
 	public UserInfoGUI() {
+		
+		user = userFile.readFromFile();
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(400, 100, 507, 446);
 		contentPane = new JPanel();

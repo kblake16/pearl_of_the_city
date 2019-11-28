@@ -32,7 +32,6 @@ import javax.swing.JTextPane;
 public class SupplierInfoGUI extends JFrame {
 
 	//Declaration of Variables
-	private ButtonGroup group;
 	private String category;
 	private Item item;
 	private Inventory inventory;
@@ -53,7 +52,8 @@ public class SupplierInfoGUI extends JFrame {
 	private JTextField telno;
 	JPanel panel = new JPanel();
 	
-	private InventoryDataManager inventoryFile = new InventoryDataManager();
+	private SupplierDataManager supplier = new SupplierDataManager();
+	private SupplierInfo sup;
 	private final JButton menubtn = new JButton("MAIN MENU");
 	
 	//Main function that runs the program
@@ -81,7 +81,7 @@ public class SupplierInfoGUI extends JFrame {
 	@SuppressWarnings("serial")
 	public SupplierInfoGUI() {
 		
-		inventory = inventoryFile.readFromFile();
+		sup = supplier.readFromFile();
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 1650, 800);
@@ -91,7 +91,7 @@ public class SupplierInfoGUI extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
-		//Creates a scroll pane ans sets the properties
+		//Creates a scroll pane and sets the properties
 		scrollPane.setBounds(487, 136, 798, 556);
 		scrollPane.setViewportBorder(new LineBorder(new Color(0, 0, 0)));
 		
@@ -106,15 +106,12 @@ public class SupplierInfoGUI extends JFrame {
 				TableModel model = table.getModel();
 				//Gets data in the table and sets it to the corresponding text field or radio button
 				name.setText(model.getValueAt(x, 1).toString());
-				email.setText(model.getValueAt(x, 2).toString());
+				email.setText(model.getValueAt(x, 4).toString());
 				address.setText(model.getValueAt(x, 3).toString());
-				telno.setText(model.getValueAt(x, 4).toString());
-				String type = model.getValueAt(x, 0).toString();
+				telno.setText(model.getValueAt(x, 2).toString());
 								
 			}
 		});
-		group = new ButtonGroup();
-	 	group = new ButtonGroup();
 			
 		table.setBorder(new LineBorder(new Color(255, 255, 255)));
 		table.setBackground(new Color(240, 255, 240));
